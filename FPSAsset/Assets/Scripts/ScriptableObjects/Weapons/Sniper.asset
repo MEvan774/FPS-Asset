@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f167134d496e37847a34b925241a17b4, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  fireRayScriptObj: {fileID: 11400000, guid: 799dc03cfa8c3504cb719e0fc23f860b, type: 2}
+  weaponName: Sniper
+  weaponModel: {fileID: 919132149155446097, guid: 88a6353e0b3b5ef4dbc5dd105a631ba1,
+    type: 3}
+  damageValue: 50
+  rangeValue: 200
+  fireRateValue: 10
+  spreadValue: 0
+  maxAmmoValue: 3
+  muzzleFlash: {fileID: 0}
+  fireSound: {fileID: 0}
+  firePoint: {fileID: 919132149155446097, guid: 88a6353e0b3b5ef4dbc5dd105a631ba1,
+    type: 3}
+  ReloadAnim: {fileID: 0}
+  FireAnim: {fileID: 0}
+  hipPosition: {x: 0, y: 1.7, z: 0}
+  aimPosition: {x: -0.589, y: 2, z: 0}
+  aimSpeed: 10
+  rotation: 0
+  fullAuto: 0
+  swayAmount: 0.05
+  maxSwayAmount: 0.1
+  swaySmoothAmount: 1
+  maxSway: 1
+  swayTimer: 5
+  PositionDampTime: 10
+  RotationDampTime: 20
+  Recoil1: 40
+  Recoil2: 60
+  Recoil3: 45
+  Recoil4: 50
+  RecoilRotation: {x: -7, y: 2, z: 3}
+  RecoilKickBack: {x: 0.7, y: -7, z: -8}
+  RecoilRotation_Aim: {x: 0, y: 0, z: 0}
+  RecoilKickBack_Aim: {x: 0, y: 0, z: 0}
+  recoilX: 1
+  recoilY: 10
+  recoilSmooth: 9

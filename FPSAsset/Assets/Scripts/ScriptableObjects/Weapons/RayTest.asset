@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828309ffb00d2dd49984258dd6b813dc, type: 3}
+  m_Name: RayTest
+  m_EditorClassIdentifier: 
+  scriptObj: {fileID: 0}
+  fpsCam: {fileID: 0}
+  damage: 50
+  range: 200
+  spread: 0
+  shotCount: 1
+  shotCount_: 1
+  impactEffect: {fileID: 4945240154755577590, guid: 42c3e35d28f44a44d871a4770364fb0f,
+    type: 3}
