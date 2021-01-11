@@ -305,6 +305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: t6_wpn_sniper_dsr50_view_LOD0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 274152c8da0af804189a6aa1e0c5d3f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 274152c8da0af804189a6aa1e0c5d3f0, type: 3}
 --- !u!1 &416911658
@@ -1186,6 +1191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CODBO2ArmRig
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7d7833acd3aa4b47b88a6a5cf4f6594,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2631744489903840227, guid: e7d7833acd3aa4b47b88a6a5cf4f6594,
         type: 3}
@@ -2372,7 +2382,7 @@ Animator:
   m_GameObject: {fileID: 1569690127}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 30adfbe8839686742a298baac5b45622, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6bd4689139bf06349a22da82e2834590, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2589,8 +2599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swapWeapon: {fileID: 0}
-  hipPosition: {x: 0, y: 0, z: 0}
-  aimPosition: {x: -0.559, y: 0.22, z: 0}
+  hipPosition: {x: 0.25, y: -0.4, z: 0.2}
+  aimPosition: {x: 0, y: -0.35, z: 0.2}
   aimSpeed: 5
   mainCamera: {fileID: 963194227}
   aimFOV: 55
@@ -2970,7 +2980,7 @@ PrefabInstance:
     - target: {fileID: 9076087728496422484, guid: 87214ca3a5fe0004eb0e33e8bd4df916,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87214ca3a5fe0004eb0e33e8bd4df916, type: 3}
