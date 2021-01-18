@@ -21,9 +21,9 @@ MonoBehaviour:
   aimPosition: {x: -0.12, y: 0.015, z: 0}
   aimFOV: 55
   aimSpeed: 10
-  swayAmount: 0.5
-  maxSwayAmount: 1
-  swaySmoothAmount: 0.7
+  swayAmount: 0.01
+  maxSwayAmount: 0.2
+  swaySmoothAmount: 5
   PositionDampTime: 20
   RotationDampTime: 5
   Recoil1: 10

@@ -947,5 +947,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4684826664918021658, guid: 2f57206479afad949a3a28b9560c2c98,
+        type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684826664918021658, guid: 2f57206479afad949a3a28b9560c2c98,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f57206479afad949a3a28b9560c2c98, type: 3}

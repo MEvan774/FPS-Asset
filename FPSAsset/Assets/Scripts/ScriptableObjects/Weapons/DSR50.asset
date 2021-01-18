@@ -21,21 +21,21 @@ MonoBehaviour:
   aimPosition: {x: -0.2, y: 0.06, z: 0}
   aimFOV: 35
   aimSpeed: 5
-  swayAmount: 0.2
-  maxSwayAmount: 0.4
+  swayAmount: 0.03
+  maxSwayAmount: 0.05
   swaySmoothAmount: 5
-  PositionDampTime: 0
-  RotationDampTime: 0
-  Recoil1: 0
-  Recoil2: 0
-  Recoil3: 0
-  Recoil4: 0
-  RecoilRotation: {x: 0, y: 0, z: 0}
-  RecoilKickBack: {x: 0, y: -0.1, z: -0.15}
+  PositionDampTime: 10
+  RotationDampTime: 15
+  Recoil1: 10
+  Recoil2: 8
+  Recoil3: 11
+  Recoil4: 14
+  RecoilRotation: {x: 0, y: -0.5, z: -0.2}
+  RecoilKickBack: {x: 0, y: -0.2, z: -0.5}
   RecoilRotation_Aim: {x: 0.01, y: -0.01, z: -0.05}
-  RecoilKickBack_Aim: {x: 0, y: -0.05, z: -0.1}
-  recoilX: 0
-  recoilY: 0
-  recoilSmooth: 0
-  maxSway: 0
-  swayTimer: 0
+  RecoilKickBack_Aim: {x: 0.05, y: -0.25, z: -0.4}
+  recoilX: 0.5
+  recoilY: 1.5
+  recoilSmooth: 5
+  maxSway: 0.5
+  swayTimer: 1.5

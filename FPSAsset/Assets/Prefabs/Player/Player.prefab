@@ -1431,6 +1431,19 @@ MonoBehaviour:
   - {fileID: 326865408320772492}
   - {fileID: 4402388641839023366}
   - {fileID: 2839376410907084469}
+--- !u!114 &3023444448021998370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5603235321358494995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9bb86fc99941c4b9c0650227706766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponData: {fileID: 11400000, guid: 649a01c0f04dbd1489ffdd94e7e91431, type: 2}
 --- !u!114 &4684826664918021658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,7 +1461,7 @@ MonoBehaviour:
   range: 200
   spread: 1
   maxAmmo: 3
-  fireRate: 10
+  fireRate: 20
   burstLeft: 0
   fpsCam: {fileID: 4684826665421764587}
   recoil: {fileID: 4684826665025774485}
@@ -1513,19 +1526,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3023444448021998370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5603235321358494995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb9bb86fc99941c4b9c0650227706766, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 649a01c0f04dbd1489ffdd94e7e91431, type: 2}
 --- !u!1001 &4684826663873384514
 PrefabInstance:
   m_ObjectHideFlags: 0
