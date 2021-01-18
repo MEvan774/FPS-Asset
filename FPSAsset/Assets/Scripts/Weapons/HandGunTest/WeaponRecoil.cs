@@ -2,24 +2,27 @@
 
 public class WeaponRecoil : MonoBehaviour
 {
+    public WeaponScriptableObj scriptObj;
+    private WeaponData weaponData;
+
     [Header("Recoil_Transform")]
     public Transform RecoilPositionTranform;
     public Transform RecoilRotationTranform;
-    [Space(10)]
-    [Header("Recoil_Settings")]
-    public float PositionDampTime;
-    public float RotationDampTime;
-    [Space(10)]
-    public float Recoil1;
-    public float Recoil2;
-    public float Recoil3;
-    public float Recoil4;
-    [Space(10)]
-    public Vector3 RecoilRotation;
-    public Vector3 RecoilKickBack;
 
-    public Vector3 RecoilRotation_Aim;
-    public Vector3 RecoilKickBack_Aim;
+    [Header("Recoil_Settings")]
+    private float PositionDampTime;
+    private float RotationDampTime;
+
+    private float Recoil1;
+    private float Recoil2;
+    private float Recoil3;
+    private float Recoil4;
+
+    private Vector3 RecoilRotation;
+    private Vector3 RecoilKickBack;
+
+    private Vector3 RecoilRotation_Aim;
+    private Vector3 RecoilKickBack_Aim;
     [Space(10)]
     public Vector3 CurrentRecoil1;
     public Vector3 CurrentRecoil2;
@@ -30,8 +33,39 @@ public class WeaponRecoil : MonoBehaviour
 
     public bool aim;
 
+    private void Start()
+    {
+        SwitchEvent();
+    }
+
+    public void SwitchEvent()
+    {
+        weaponData = GetComponentInChildren<WeaponData>();
+        scriptObj = weaponData.weaponData;
+        SetData();
+    }
+
+    void SetData()
+    {
+        PositionDampTime = scriptObj.PositionDampTime;
+        RotationDampTime = scriptObj.RotationDampTime;
+
+        Recoil1 = scriptObj.Recoil1;
+        Recoil2 = scriptObj.Recoil2;
+        Recoil3 = scriptObj.Recoil3;
+        Recoil4 = scriptObj.Recoil4;
+
+        RecoilRotation = scriptObj.RecoilRotation;
+        RecoilKickBack = scriptObj.RecoilKickBack;
+
+        RecoilRotation_Aim = scriptObj.RecoilRotation_Aim;
+        RecoilKickBack_Aim = scriptObj.RecoilKickBack_Aim;
+    }
+
+
     void FixedUpdate()
     {
+        Debug.Log("RecoilFixed");
         CurrentRecoil1 = Vector3.Lerp(CurrentRecoil1, Vector3.zero, Recoil1 * Time.deltaTime);
         CurrentRecoil2 = Vector3.Lerp(CurrentRecoil2, CurrentRecoil1, Recoil2 * Time.deltaTime);
         CurrentRecoil3 = Vector3.Lerp(CurrentRecoil3, Vector3.zero, Recoil3 * Time.deltaTime);

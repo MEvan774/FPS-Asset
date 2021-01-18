@@ -14,6 +14,7 @@ public class WeaponSpawner : MonoBehaviour
         //scriptObj = manager.gunInventory[0];
     }
 
+    /*
     public void wepSwapEvent()
     {
         Debug.Log("WEPSWAP");
@@ -25,4 +26,5 @@ public class WeaponSpawner : MonoBehaviour
         mainWeapon = weaponModel.GetComponent<MainWeapon>();
         scriptObj = mainWeapon.scriptObj;
     }
+    */
 }

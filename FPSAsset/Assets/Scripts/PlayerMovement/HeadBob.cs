@@ -22,7 +22,7 @@ public class HeadBob : MonoBehaviour
         midReset = midPoint;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float waveSlice = 0.0f;
         float horizontal = Input.GetAxis("Horizontal");

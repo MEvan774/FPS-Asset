@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WeaponAim : MonoBehaviour
 {
-    public WeaponSpawner swapWeapon;
-    private WeaponScriptableObj scriptObj;
+    public WeaponScriptableObj scriptObj;
+    private WeaponData weaponData;
 
     public Vector3 hipPosition;
     public Vector3 aimPosition;
@@ -19,9 +19,24 @@ public class WeaponAim : MonoBehaviour
 
     void Start()
     {
-
         //float mainSpeed = aimSpeed;
         defaultFOV = mainCamera.fieldOfView;
+        SwitchEvent();
+    }
+
+    public void SwitchEvent()
+    {
+        weaponData = GetComponentInChildren<WeaponData>();
+        scriptObj = weaponData.weaponData;
+        SetData();
+    }
+
+    void SetData()
+    {
+        hipPosition = scriptObj.hipPosition;
+        aimPosition = scriptObj.aimPosition;
+        aimFOV = scriptObj.aimFOV;
+        aimSpeed = scriptObj.aimSpeed;
     }
 
     public void AimCenterEvent()

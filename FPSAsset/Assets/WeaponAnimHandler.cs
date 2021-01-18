@@ -6,17 +6,22 @@ using UnityEngine.Events;
 
 public class WeaponAnimHandler : MonoBehaviour
 {
-    public Animator animator;
+    Animator anim;
     public UnityEvent reloadEnd;
 
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     public void AnimReloadStart()
     {
-        animator.SetBool("IsReloading", true);
+        anim.SetBool("IsReloading", true);
     }
 
     public void AnimReloadEndEvent()
     {
-        animator.SetBool("IsReloading", false);
+        anim.SetBool("IsReloading", false);
         reloadEnd.Invoke();
     }
 

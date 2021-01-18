@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FirstPersonCam : MonoBehaviour
 {
-    public WeaponSpawner swapWeapon;
-    WeaponScriptableObj scriptObj;
+    public WeaponScriptableObj scriptObj;
+    private WeaponData weaponData;
 
     //Camera
     public float sensitivity = 1;
@@ -28,7 +28,7 @@ public class FirstPersonCam : MonoBehaviour
     [Space(10)]
     [Header("Sway Settings")]
     public float maxSway = 10;
-    public float smoothX, smoothY;
+    private float smoothX, smoothY;
 
     public bool isAiming = false;
 
@@ -38,8 +38,9 @@ public class FirstPersonCam : MonoBehaviour
 
     //Vector3 originalPos;
 
-    float x;
-    float y;
+    float x, y;
+
+    //Quaternion aimRotX, aimRotY;
 
     void Start()
     {
@@ -47,7 +48,22 @@ public class FirstPersonCam : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    //Random.Range(-maxAmount, maxAmount), Random.Range(-maxAmount, maxAmount)
+    public void SwitchEvent()
+    {
+        weaponData = GetComponentInChildren<WeaponData>();
+        scriptObj = weaponData.weaponData;
+        SetData();
+    }
+
+    void SetData()
+    {
+        recoilX = scriptObj.recoilX;
+        recoilY = scriptObj.recoilY;
+        recoilSmooth = scriptObj.recoilSmooth;
+
+        maxSway = scriptObj.maxSway;
+        timer = scriptObj.swayTimer;
+    }
 
     void Update()
     {
@@ -111,6 +127,8 @@ public class FirstPersonCam : MonoBehaviour
 
             smoothX = x * Time.deltaTime;
             smoothY = y * Time.deltaTime;
+
+            //aimRotX = Quaternion.Lerp(transform.rotation, Random.Range(-mouseY.rotation.y, mouseY), smoothX * Time.deltaTime);
         }
 
     }

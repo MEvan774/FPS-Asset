@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
-    public WeaponSpawner swapWeapon;
+    public WeaponScriptableObj scriptObj;
+    [SerializeField]
+    private WeaponData weaponData;
 
     public float amount;
     public float maxAmount;
@@ -17,12 +19,26 @@ public class WeaponSway : MonoBehaviour
     void Start()
     {
         initialPosition = transform.localPosition;
+        SwitchEvent();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Sway();
+    }
+
+    public void SwitchEvent()
+    {
+        weaponData = GetComponentInChildren<WeaponData>();
+        scriptObj = weaponData.weaponData;
+        SetData();
+    }
+
+    void SetData()
+    {
+        amount = scriptObj.swayAmount;
+        maxAmount = scriptObj.maxSwayAmount;
+        smoothAmount = scriptObj.swaySmoothAmount;
     }
 
     void Sway()

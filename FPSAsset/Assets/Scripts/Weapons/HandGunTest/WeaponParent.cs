@@ -11,33 +11,28 @@ public class WeaponParent : MonoBehaviour
     FireTypes fireType;
 
     //[Base values (configable with 'WeaponScriptableObj')]
-    protected GameObject weaponModel;
     [SerializeField]
     protected float damage;
     [SerializeField]
-    protected float range;
+    protected float range = 100;
     [SerializeField]
     protected float spread;
     [SerializeField]
     protected int maxAmmo;
-    [SerializeField]
     protected int currentAmmo;
-    private float nextTimeToFire = 0f;
-
     protected bool reloading = false;
     protected bool isSprinting = false;
 
     [Space(10)]
     [SerializeField]
     protected float fireRate;
+    private float nextTimeToFire = 0f;
     [SerializeField]
     protected int burstLeft;
     private int burstReset;
 
     [Header("Main References")]
     public FirstPersonCam fpsCam;
-    public WeaponScriptableObj scriptObj;
-    public WeaponSpawner spawner;
     public WeaponRecoil recoil;
     public Animator animator;
 
@@ -47,13 +42,9 @@ public class WeaponParent : MonoBehaviour
     public UnityEvent fireEvent;
     public UnityEvent reloadEvent;
 
-    public bool isReloading = false;
+    protected bool isReloading = false;
 
-
-    //public Camera fpsCam;
-    //RaycastHit hit;
-
-    private void Start()
+    protected void Start()
     {
         burstReset = burstLeft;
         currentAmmo = maxAmmo;
@@ -61,10 +52,10 @@ public class WeaponParent : MonoBehaviour
 
     protected virtual void Update()
     {
-        Shoot();
+        Shoot(fireType);
         AimCheck();
     }
-    /*
+
     protected virtual void Shoot(FireTypes type)
     {
         if (currentAmmo > 0 && !isReloading)
@@ -87,29 +78,11 @@ public class WeaponParent : MonoBehaviour
             Debug.Log("Reloading...");
             isReloading = true;
             reloadEvent.Invoke();
-            //animator.SetBool("IsReloading", true);
-        }
-    }
-    */
-    protected virtual void Shoot()
-    {
-        if (currentAmmo > 0 && !isReloading)
-        {
-            if (!isSprinting && Input.GetMouseButtonDown(0) && Time.time >= nextTimeToFire)
-            {
-                Fire();
-            }
-        }
-        else//Reloads if there is no ammo in magazine left
-        {
-            Debug.Log("Reloading...");
-            isReloading = true;
-            reloadEvent.Invoke();
             animator.SetBool("IsReloading", true);
         }
     }
 
-    void Fire()
+    protected virtual void Fire()
     {
         nextTimeToFire = Time.time + 1f / fireRate;
         fireEvent.Invoke();
@@ -142,6 +115,7 @@ public class WeaponParent : MonoBehaviour
         if (Input.GetMouseButton(1) && !isReloading)
         {
             aimCenterEvent.Invoke();
+            IsAiming();
         }
         else
         {
@@ -149,10 +123,15 @@ public class WeaponParent : MonoBehaviour
         }
     }
 
+    protected virtual void IsAiming()
+    {
+
+    }
+
     public void ReloadEndEvent()
     {
         currentAmmo = maxAmmo;
-        //animator.SetBool("IsReloading", false);
+        animator.SetBool("IsReloading", false);
         isReloading = false;
     }
 
