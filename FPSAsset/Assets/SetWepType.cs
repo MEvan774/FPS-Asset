@@ -14,9 +14,4 @@ public class SetWepType : MonoBehaviour
     {
         overrider.SetAnim(overrideCon[value]);
     }
-
-    public void ReloadEndEvent()
-    {
-
-    }
 }

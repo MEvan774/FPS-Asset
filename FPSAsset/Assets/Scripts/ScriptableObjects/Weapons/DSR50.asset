@@ -31,9 +31,9 @@ MonoBehaviour:
   Recoil3: 0
   Recoil4: 0
   RecoilRotation: {x: 0, y: 0, z: 0}
-  RecoilKickBack: {x: 0, y: 0, z: 0}
-  RecoilRotation_Aim: {x: 0, y: 0, z: 0}
-  RecoilKickBack_Aim: {x: 0, y: 0, z: 0}
+  RecoilKickBack: {x: 0, y: -0.1, z: -0.15}
+  RecoilRotation_Aim: {x: 0.01, y: -0.01, z: -0.05}
+  RecoilKickBack_Aim: {x: 0, y: -0.05, z: -0.1}
   recoilX: 0
   recoilY: 0
   recoilSmooth: 0
