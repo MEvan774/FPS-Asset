@@ -65,7 +65,6 @@ public class WeaponRecoil : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("RecoilFixed");
         CurrentRecoil1 = Vector3.Lerp(CurrentRecoil1, Vector3.zero, Recoil1 * Time.deltaTime);
         CurrentRecoil2 = Vector3.Lerp(CurrentRecoil2, CurrentRecoil1, Recoil2 * Time.deltaTime);
         CurrentRecoil3 = Vector3.Lerp(CurrentRecoil3, Vector3.zero, Recoil3 * Time.deltaTime);

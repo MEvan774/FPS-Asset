@@ -6,12 +6,11 @@ using UnityEngine;
 public class WeaponSway : MonoBehaviour
 {
     public WeaponScriptableObj scriptObj;
-    [SerializeField]
     private WeaponData weaponData;
 
-    public float amount;
-    public float maxAmount;
-    public float smoothAmount;
+    private float amount;
+    private float maxAmount;
+    private float smoothAmount;
     bool aim = false;
 
     private Vector3 initialPosition;

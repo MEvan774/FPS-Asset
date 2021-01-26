@@ -1,16 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class WeaponSwitching : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int selectedWep = 0;
+    public int selectedWep = 0;
+    private int prevWep = 1;
     public GameObject[] wep;
 
     public AnimatorControllerParameter[] anims;
     public SetWepType wepType;
 
     public UnityEvent wepSwapEvent;
+    public UnityEvent swapOutAnimEvent;
+
+    private bool switching = false;
+
+    [SerializeField]
+    private float switchTimer;
 
     void Start()
     {
@@ -24,22 +32,36 @@ public class WeaponSwitching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1) && selectedWep != 0)
+        if (!switching)
         {
-            selectedWep = 0;
-            wepType.Set(0);
-            wep[0].SetActive(true);
-            wep[1].SetActive(false);
-            WepSwapEvent();
+            if (Input.GetKey(KeyCode.Alpha1) && selectedWep != 0)
+            {
+                switching = true;
+                swapOutAnimEvent.Invoke();
+                prevWep = 1;
+                selectedWep = 0;
+                StartCoroutine(SwapOut());
+            }
+            if (Input.GetKey(KeyCode.Alpha2) && selectedWep != 1)
+            {
+                switching = true;
+                swapOutAnimEvent.Invoke();
+                prevWep = 0;
+                selectedWep = 1;
+                StartCoroutine(SwapOut());
+            }
         }
-        if (Input.GetKey(KeyCode.Alpha2) && selectedWep != 1)
-        {
-            selectedWep = 1;
-            wepType.Set(1);
-            wep[0].SetActive(false);
-            wep[1].SetActive(true);
-            WepSwapEvent();
-        }
+
+    }
+
+    IEnumerator SwapOut()
+    {
+        yield return new WaitForSeconds(switchTimer);
+        wepType.Set(selectedWep);
+        wep[prevWep].SetActive(false);
+        wep[selectedWep].SetActive(true);
+        WepSwapEvent();
+        switching = false;
     }
 
     void WepSwapEvent()

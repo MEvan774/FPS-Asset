@@ -14,11 +14,11 @@ public class FirstPersonCam : MonoBehaviour
 
 
     //RecoilSystem
-    public float recoilY;
-    public float recoilX;
+    private float recoilY;
+    private float recoilX;
     float recoilFireX, recoilFireY;
-    public float recoilSmooth = 10;
-    public float recoilTime = 1;
+    private float recoilSmooth = 10;
+    private float recoilTime = 1;
     float time;
 
     Vector2 recoilRemaining;
@@ -46,6 +46,8 @@ public class FirstPersonCam : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        SwitchEvent();
     }
 
     public void SwitchEvent()
@@ -60,12 +62,13 @@ public class FirstPersonCam : MonoBehaviour
         recoilX = scriptObj.recoilX;
         recoilY = scriptObj.recoilY;
         recoilSmooth = scriptObj.recoilSmooth;
+        recoilTime = scriptObj.recoilTime;
 
         maxSway = scriptObj.maxSway;
         timer = scriptObj.swayTimer;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CamControl();
     }
@@ -107,7 +110,7 @@ public class FirstPersonCam : MonoBehaviour
     {
         //Vertical recoil
         recoilFireX = Random.Range(-recoilX, recoilX);
-        recoilFireY = Random.Range(0, -recoilY);
+        recoilFireY = -recoilY;
 
         time = recoilTime;
     }

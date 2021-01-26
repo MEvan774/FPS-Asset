@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Msmc : WeaponParent
 {
-    
+    protected override void Fire()
+    {
+        base.Fire();
+        audioManager.play("MsmcFire");
+    }
 }

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class WeaponAim : MonoBehaviour
 {
-    public WeaponScriptableObj scriptObj;
+    private WeaponScriptableObj scriptObj;
     private WeaponData weaponData;
 
     public Vector3 hipPosition;
     public Vector3 aimPosition;
 
     public float aimSpeed = 25f;
+    private float fovSpeed = 1;
 
     public Camera mainCamera;
-    public float aimFOV = 55;
+    private float aimFOV = 55;
     private float defaultFOV;
     private bool isSprinting = false;
 
@@ -37,6 +38,7 @@ public class WeaponAim : MonoBehaviour
         aimPosition = scriptObj.aimPosition;
         aimFOV = scriptObj.aimFOV;
         aimSpeed = scriptObj.aimSpeed;
+        fovSpeed = scriptObj.fovSpeed;
     }
 
     public void AimCenterEvent()
@@ -46,7 +48,7 @@ public class WeaponAim : MonoBehaviour
             //Debug.Log("EVENTON");
             if (mainCamera.fieldOfView > aimFOV)
             {
-                mainCamera.fieldOfView -= 1;
+                mainCamera.fieldOfView -= fovSpeed;
             }
             transform.localPosition = Vector3.Slerp(transform.localPosition, aimPosition, Time.deltaTime * aimSpeed);
         }
@@ -57,7 +59,7 @@ public class WeaponAim : MonoBehaviour
          //Debug.Log("EVENTOFF");
          if (mainCamera.fieldOfView < defaultFOV)
          {
-             mainCamera.fieldOfView += 1;
+             mainCamera.fieldOfView += fovSpeed;
          }
          transform.localPosition = Vector3.Slerp(transform.localPosition, hipPosition, Time.deltaTime * aimSpeed);
     }

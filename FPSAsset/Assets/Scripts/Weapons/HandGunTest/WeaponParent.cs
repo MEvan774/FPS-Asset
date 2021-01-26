@@ -18,8 +18,8 @@ public class WeaponParent : MonoBehaviour
     [SerializeField]
     protected float spread;
     [SerializeField]
-    protected int maxAmmo;
-    protected int currentAmmo;
+    public int maxAmmo;
+    public int currentAmmo;
     protected bool reloading = false;
     protected bool isSprinting = false;
 
@@ -36,24 +36,53 @@ public class WeaponParent : MonoBehaviour
     public WeaponRecoil recoil;
     public Animator animator;
 
+    [Space(10)]
+    [SerializeField]
+    protected AudioManager audioManager;
+
     //Events
     public UnityEvent aimCenterEvent;
     public UnityEvent aimHipEvent;
     public UnityEvent fireEvent;
+    public UnityEvent fireEndEvent;
     public UnityEvent reloadEvent;
 
     protected bool isReloading = false;
+    protected bool isDisabled = false;
 
-    protected void Start()
+
+    protected virtual void Start()
     {
         burstReset = burstLeft;
         currentAmmo = maxAmmo;
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+
+    protected void OnEnable()
+    {
+        animator.SetTrigger("SwapIn");
+        isDisabled = false;
+    }
+
+    protected void OnDisable()
+    {
+        isDisabled = true;
+    }
+
+    public void SwitchOutEvent()
+    {
+        animator.SetTrigger("SwapOut");
     }
 
     protected virtual void Update()
     {
         Shoot(fireType);
         AimCheck();
+
+        if (Input.GetKey("r"))
+        {
+            audioManager.play("SoundYouMakeWhenTakeABath");
+        }
     }
 
     protected virtual void Shoot(FireTypes type)
@@ -72,10 +101,17 @@ public class WeaponParent : MonoBehaviour
                 if (burstLeft <= 0)
                     burstLeft = burstReset;
             }
+            if(Time.time >= nextTimeToFire || Time.time >= nextTimeToFire - 0.75f && type == FireTypes.semi)
+            fireEndEvent.Invoke();
         }
         else//Reloads if there is no ammo in magazine left
         {
-            Debug.Log("Reloading...");
+            //Debug.Log("Reloading...");
+            if (Time.time >= nextTimeToFire || Time.time >= nextTimeToFire - 0.75f && type == FireTypes.semi)
+            {
+                fireEndEvent.Invoke();
+            }
+
             isReloading = true;
             reloadEvent.Invoke();
             animator.SetBool("IsReloading", true);
@@ -120,6 +156,7 @@ public class WeaponParent : MonoBehaviour
         else
         {
             aimHipEvent.Invoke();
+            IsNotAiming();
         }
     }
 
@@ -128,11 +165,20 @@ public class WeaponParent : MonoBehaviour
 
     }
 
+    protected virtual void IsNotAiming()
+    {
+
+    }
+
     public void ReloadEndEvent()
     {
-        currentAmmo = maxAmmo;
-        animator.SetBool("IsReloading", false);
-        isReloading = false;
+        if (!isDisabled)
+        {
+            currentAmmo = maxAmmo;
+            animator.SetBool("IsReloading", false);
+            isReloading = false;
+        }
+
     }
 
     public void IsSprinting()

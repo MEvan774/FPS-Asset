@@ -36,6 +36,7 @@ public class WeaponScriptableObj : ScriptableObject
     public Vector3 aimPosition;
     public float aimFOV = 55;
     public float aimSpeed = 25;
+    public float fovSpeed = 1;
 
     /*
     [Header("Misc option")]
@@ -69,9 +70,16 @@ public class WeaponScriptableObj : ScriptableObject
     [Header("FirstPersonCam/Fire Recoil/ AimSway")]
     public float recoilX;
     public float recoilY;
+    public float recoilTime;
     [Space(10)]
     public float recoilSmooth;
 
     public float maxSway;
     public float swayTimer;
+
+    [Header("UI")]
+
+    public float reticleRestingSize;
+    public float reticleMaxSize;
+    public float reticleSpeed;
 }
